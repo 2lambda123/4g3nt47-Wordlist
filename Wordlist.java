@@ -1,5 +1,6 @@
 package com.umarabdul.util.wordlist;
 
+import io.github.pixee.security.BoundedLineReader;
 import java.io.*;
 import java.util.ArrayList;
 
@@ -89,7 +90,7 @@ public class Wordlist implements Runnable{
     String word = null;
     try{
       while(alive){
-        word = reader.readLine();
+        word = BoundedLineReader.readLine(reader, 5_000_000);
         if (word == null)
           break;
         buffer.add(word);
